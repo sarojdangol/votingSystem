@@ -1,7 +1,9 @@
 package com.intern.votingSystem.repository;
 
+import com.intern.votingSystem.dto.CandidateDTO;
 import com.intern.votingSystem.model.Candidate;
 import com.intern.votingSystem.model.User;
+import com.intern.votingSystem.projection.CandidateProjection;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
@@ -13,14 +15,17 @@ import java.util.List;
 @Repository
 public interface CandidateRepository extends JpaRepository<Candidate, Integer> {
 
-    @Query("Select c from Candidate c order By c.c_id")
+    @Query(value = "Select * from Candidate", nativeQuery = true)
     List<Candidate> getCandidateQuery();
-
-    //    @Modifying
-//    @Query("Update Candidate setfrom User u where u.id=:id")
 
     @Modifying
     @Query("Delete from Candidate c where c.c_id=:id")
     void deleteCandidateQuery(@Param("id") int id);
+
+
+    //    @Query("SELECT e from Event e inner join e.candidate c where c.c_id=:id")
+
+    @Query("Select c from Candidate c inner join c.event e where c.c_id=:id")
+    List<Candidate> getCandidateByEventQuery(@Param("id") int id);
 
 }

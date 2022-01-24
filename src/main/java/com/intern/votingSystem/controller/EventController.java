@@ -1,6 +1,8 @@
 package com.intern.votingSystem.controller;
 
+import com.intern.votingSystem.dto.CandidateDTO;
 import com.intern.votingSystem.dto.EventDTO;
+import com.intern.votingSystem.model.Candidate;
 import com.intern.votingSystem.model.Event;
 import com.intern.votingSystem.service.EventService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,17 +23,22 @@ public class EventController {
     }
 
     @GetMapping
-    public List<EventDTO> getAllEvent(){
+    public List<EventDTO> getAllEvent() {
         return eventService.getAllEvent();
     }
 
     @PutMapping
-    public EventDTO updateEvent(@RequestBody EventDTO eventDTO){
+    public EventDTO updateEvent(@RequestBody EventDTO eventDTO) {
         return eventService.updateEvent(eventDTO);
     }
 
     @DeleteMapping("/{id}")
-    public String deleteEvent(@PathVariable int id){
+    public String deleteEvent(@PathVariable int id) {
         return eventService.deleteEvent(id);
     }
+
+//    @GetMapping("/{id}/candidate")
+//    public List<CandidateDTO> getAllCandidate(@PathVariable int id) {
+//        return eventService.getCandidateByEvent(id);
+//    }
 }

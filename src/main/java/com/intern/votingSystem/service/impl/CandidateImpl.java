@@ -2,9 +2,7 @@ package com.intern.votingSystem.service.impl;
 
 import com.intern.votingSystem.dto.CandidateDTO;
 import com.intern.votingSystem.dto.Message;
-import com.intern.votingSystem.dto.UserDTO;
 import com.intern.votingSystem.model.Candidate;
-import com.intern.votingSystem.model.User;
 import com.intern.votingSystem.repository.CandidateRepository;
 import com.intern.votingSystem.service.CandidateService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +16,10 @@ import java.util.List;
 public class CandidateImpl implements CandidateService {
     @Autowired
     CandidateRepository candidateRepository;
+//    public CandidateDTO addCandidateRequest(CandidateDTO candidateDTO){
+//        return
+//    }
+
 
     @Override
     public CandidateDTO addCandidate(CandidateDTO candidateDTO) {
@@ -31,7 +33,6 @@ public class CandidateImpl implements CandidateService {
 
     @Override
     public List<CandidateDTO> getAllCandidate() {
-
 
         List<Candidate> candidateList = candidateRepository.getCandidateQuery();
         List<CandidateDTO> candidateDTOList = new ArrayList<>();
@@ -60,11 +61,24 @@ public class CandidateImpl implements CandidateService {
 
         if (candidateRepository.existsById(id)) {
             candidateRepository.deleteCandidateQuery(id);
-            return Message.setMessage("001", "succesfully deleted");
+            return Message.setMessage("001", "successfully deleted");
 
         } else {
             return Message.setMessage("001", "candidate with given id does not exist");
 
         }
+    }
+
+    @Override
+    public List<CandidateDTO> getCandidateByEvent(int id) {
+        List<Candidate> candidateList = candidateRepository.getCandidateByEventQuery(id);
+        List<CandidateDTO> candidateDTOList = new ArrayList<>();
+        candidateList.forEach(candidate -> {
+            CandidateDTO candidateDTO = new CandidateDTO();
+            candidateDTO.candidateDTOMthd(candidate);
+            candidateDTOList.add(candidateDTO);
+
+        });
+        return candidateDTOList;
     }
 }

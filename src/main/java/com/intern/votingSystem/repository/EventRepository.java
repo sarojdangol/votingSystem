@@ -1,5 +1,6 @@
 package com.intern.votingSystem.repository;
 
+import com.intern.votingSystem.model.Candidate;
 import com.intern.votingSystem.model.Event;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
@@ -18,4 +19,9 @@ public interface EventRepository extends JpaRepository<Event,Integer> {
     @Modifying
     @Query("Delete from Event e where e.event_id=:id")
     void deleteEvent(@Param("id") int id);
+
+//    @Query("SELECT p from POSTS p inner join p.user u where u.username=?1")
+
+//    @Query("SELECT e.candidate from Event e where e.event_id=:id")
+//    List<CandidateProjection> getCandidateByEvent(@Param("id") int id);
 }
