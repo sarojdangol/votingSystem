@@ -27,6 +27,7 @@ public class Vote {
     private LocalDateTime voteStartDate;
     private LocalDateTime voteEndDate;
     @OneToOne
+//    @JoinColumn(name = "c_id")
     private Candidate candidates;
     @OneToOne
     private User user;
@@ -40,4 +41,7 @@ public class Vote {
         this.user= voteDTO.getUser();
         this.voteStatus=voteDTO.getVoteStatus();
     }
+
+
+
 }

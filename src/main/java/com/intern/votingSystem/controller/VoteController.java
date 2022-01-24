@@ -1,5 +1,6 @@
 package com.intern.votingSystem.controller;
 
+import com.intern.votingSystem.dto.VoteCountDTO;
 import com.intern.votingSystem.dto.VoteDTO;
 import com.intern.votingSystem.model.Vote;
 import com.intern.votingSystem.service.VoteService;
@@ -21,13 +22,13 @@ public class VoteController {
     }
 
     @GetMapping
-    List<VoteDTO> getAllVote(){
+    List<VoteDTO> getAllVote() {
         return voteService.getAllCandidateVote();
     }
 
     @GetMapping("/count")
-    List<VoteDTO> getVoteCount(){
-        return  voteService.getCandidateVoteCount();
+    List<VoteCountDTO> getVoteCount() {
+        return voteService.getCandidateVoteCount();
     }
 
 }

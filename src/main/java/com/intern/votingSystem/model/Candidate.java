@@ -29,6 +29,8 @@ public class Candidate {
     @OneToOne
     private Event event;
 //    @JsonBackReference
+//    @OneToOne
+//    private Vote vote;
 
 
     public void candidateMthd(CandidateDTO candidateDTO) {

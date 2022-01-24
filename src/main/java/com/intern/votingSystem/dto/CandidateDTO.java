@@ -2,6 +2,7 @@ package com.intern.votingSystem.dto;
 
 import com.intern.votingSystem.model.Candidate;
 import com.intern.votingSystem.model.Event;
+import com.intern.votingSystem.model.Vote;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -17,6 +18,7 @@ public class CandidateDTO {
     private String candidateCode;
     private int vote;
     private Event event;
+//    private Vote vote;
 
     public void candidateDTOMthd(Candidate candidate) {
         this.c_id = candidate.getC_id();
