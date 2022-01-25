@@ -27,7 +27,7 @@ public class VoteController {
     }
 
     @GetMapping("/count")
-    List<Object> getVoteCount() {
+    List<VoteCountDTO> getVoteCount() {
         return voteService.getCandidateVoteCount();
     }
 
