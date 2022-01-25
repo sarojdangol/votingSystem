@@ -19,12 +19,18 @@ public interface VoteRepository extends JpaRepository<Vote, Integer> {
     @Query("Select v from Vote v")
     List<Vote> getAllVoteQuery();
 
-//    @Query(value = "Select new com.intern.votingSystem.dto.VoteCountDTO(v.candidates_c_id, c.candidate_name, count(v.vote_status))from vote v inner join candidate c on c.c_id=v.candidates_c_id Group By v.candidates_c_id, c.candidate_name", nativeQuery = true)
 
-    //Select new com.intern.votingSystem.dto.VoteCountDTO candidates_c_id, c.candidate_name, count(vote_status) from vote inner join candidate c on c.c_id=vote.candidates_c_id Group by candidates_c_id, c.candidate_name;
-    @Query("select new com.intern.votingSystem.dto.VoteCountDTO(v.candidates.c_id, c.candidateName, COUNT(v.voteStatus))" +
-            " from Vote v inner join Candidate c on c.c_id=v.vote_id Group By v.candidates.c_id,c.candidateName")
+//    @Query(value = "Select v.candidates_c_id, c.candidate_name, count(v.vote_status), c.candidate_code" +
+//            "from vote v inner join candidate c on c.c_id=v.candidates_c_id " +
+//            "Group By v.candidates_c_id,c.candidate_name, c.candidate_code", nativeQuery = true)
+//    Select new com.intern.votingSystem.dto.VoteCountDTO candidates_c_id, c.candidate_name, count(vote_status) from vote inner join candidate c on c.c_id=vote.candidates_c_id Group by candidates_c_id, c.candidate_name;
+    @Query("select v.candidates.c_id,c.candidateName, COUNT(v.vote_id), c.candidateCode" +
+            " from Vote v inner join Candidate c on c.c_id=v.vote_id " +
+            "Group By v.candidates.c_id,c.candidateName, c.candidateCode")
+        List<Object> countCandidateVoteQuery();
+
 //    List<Object> countCandidateVoteQuery();
-    List<VoteCount> countCandidateVoteQuery();
+
+
 
 }

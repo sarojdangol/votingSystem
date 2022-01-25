@@ -6,21 +6,11 @@ import javax.persistence.Column;
 
 
 public interface CandidateProjection {
-    String getCandidateName();
 
+    int getCandidateId();
+    String getCandidateName();
+    int getVoteCount();
     String getCandidateCode();
 
-    int getVote();
-
-//    String getEve();
-
-//    int getEvent_id();
-
-
-//    String getEventCde();
-//
-//    String getEventStartDate();
-//
-//    String getEventEndDate();
 
 }

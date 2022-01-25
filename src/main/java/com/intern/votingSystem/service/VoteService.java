@@ -9,6 +9,6 @@ import java.util.List;
 public interface VoteService {
  VoteDTO addVote(VoteDTO voteDTO);
  List<VoteDTO> getAllCandidateVote();
- List<VoteCountDTO> getCandidateVoteCount();
+ List<Object> getCandidateVoteCount();
 
 }

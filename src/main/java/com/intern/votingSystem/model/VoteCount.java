@@ -13,13 +13,16 @@ import javax.persistence.Entity;
 @NoArgsConstructor
 @AllArgsConstructor
 public class VoteCount {
-   private int candidateId;
-    private int voteCount;
+    private int candidateId;
     private String candidateName;
+    private int voteCount;
+    private String candidateCode;
 
-    public VoteCount(VoteCountDTO voteCountDTO){
-        this.candidateId=voteCountDTO.getCandidateId();
-        this.voteCount=voteCountDTO.getVoteCount();
-        this.candidateName=voteCountDTO.getCandidateName();
+
+    public VoteCount(VoteCountDTO voteCountDTO) {
+        this.candidateId = voteCountDTO.getCandidateId();
+        this.voteCount = voteCountDTO.getVoteCount();
+        this.candidateName = voteCountDTO.getCandidateName();
+        this.candidateCode = voteCountDTO.getCandidateCode();
     }
 }
