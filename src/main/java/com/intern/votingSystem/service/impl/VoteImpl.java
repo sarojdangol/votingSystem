@@ -41,7 +41,7 @@ public class VoteImpl implements VoteService {
     @Override
     public List<VoteCountDTO> getCandidateVoteCount() {
         List<Object> voteList = voteRepository.countCandidateVoteQuery();
-        System.out.println(voteList);
+//        System.out.println(voteList);
         List<VoteCountDTO> response = new ArrayList<>();
 
         voteList.forEach(vote -> {
@@ -59,9 +59,9 @@ public class VoteImpl implements VoteService {
 //        System.out.println(voteObjects);
 //        List<Object> voteObjectList= new ArrayList<>();
 //
-////        voteObjects.forEach(vote->{
-////            voteObjectList.add(vote);
-////        });
+//        voteObjects.forEach(vote->{
+//            voteObjectList.add(vote);
+//        });
 //        return voteObjects;
     }
 }

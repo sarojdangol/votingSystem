@@ -13,8 +13,8 @@ public interface VoteRepository extends JpaRepository<Vote, Integer> {
     @Query("Select v from Vote v")
     List<Vote> getAllVoteQuery();
 
-//
-    @Query(value = "Select v.candidates_c_id, c.candidate_name, count(v.vote_status)" +
+
+    @Query(value = "Select v.candidates_c_id, c.candidate_name, count(v.candidates_c_id)" +
             "from vote v inner join candidate c on c.c_id=v.candidates_c_id " +
             "Group By v.candidates_c_id,c.candidate_name", nativeQuery = true)
     List<Object> countCandidateVoteQuery();

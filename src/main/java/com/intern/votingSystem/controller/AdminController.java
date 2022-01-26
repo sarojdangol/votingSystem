@@ -1,6 +1,7 @@
 package com.intern.votingSystem.controller;
 
 import com.intern.votingSystem.dto.AdminDTO;
+import com.intern.votingSystem.dto.VoteTableAdminDTO;
 import com.intern.votingSystem.service.AdminService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -21,5 +22,13 @@ public class AdminController {
     @GetMapping
     public List<AdminDTO> getAllAdmin(){
         return adminService.getAllAdmin();
+    }
+    @DeleteMapping("/{id}")
+    public String deleteAdmin(@PathVariable int id){
+        return adminService.deleteAdmin(id);
+    }
+    @GetMapping("/voteTable")
+    public List<VoteTableAdminDTO> getVoteTable(){
+        return adminService.getVoteTable();
     }
 }
