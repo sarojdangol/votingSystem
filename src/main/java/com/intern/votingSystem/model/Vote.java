@@ -31,17 +31,18 @@ public class Vote {
     private Candidate candidates;
     @OneToOne
     private User user;
+
     private Boolean voteStatus;
 
     public Vote(VoteDTO voteDTO) {
         this.vote_id = voteDTO.getVote_id();
         this.voteStartDate = voteDTO.getVoteStartDate();
         this.voteEndDate = voteDTO.getVoteEndDate();
-        this.candidates= voteDTO.getCandidates();
-        this.user= voteDTO.getUser();
-        this.voteStatus=voteDTO.getVoteStatus();
+        this.candidates = voteDTO.getCandidates();
+        this.user = voteDTO.getUser();
+//        this.user.setId(id);
+        this.voteStatus = voteDTO.getVoteStatus();
     }
-
 
 
 }

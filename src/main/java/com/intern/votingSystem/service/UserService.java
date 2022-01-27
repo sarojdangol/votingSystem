@@ -1,6 +1,7 @@
 package com.intern.votingSystem.service;
 
 import com.intern.votingSystem.dto.UserDTO;
+import com.intern.votingSystem.dto.VoteDTO;
 import com.intern.votingSystem.model.User;
 
 import java.util.List;

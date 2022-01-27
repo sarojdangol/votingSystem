@@ -1,7 +1,9 @@
 package com.intern.votingSystem.controller;
 
 import com.intern.votingSystem.dto.UserDTO;
+import com.intern.votingSystem.dto.VoteDTO;
 import com.intern.votingSystem.service.UserService;
+import com.intern.votingSystem.service.VoteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -13,6 +15,8 @@ public class UserController {
 
     @Autowired
     UserService userService;
+    @Autowired
+    VoteService voteService;
 
     @PostMapping
     public UserDTO addUser(@RequestBody UserDTO userDTO) {
@@ -33,5 +37,11 @@ public class UserController {
     public String deleteUser(@PathVariable int id) {
         return userService.deleteUser(id);
     }
+
+    @PostMapping("/voteCandidate")
+    VoteDTO voteCandidate(@RequestBody VoteDTO voteDTO) {
+        return voteService.addVote(voteDTO);
+    }
+
 }
 

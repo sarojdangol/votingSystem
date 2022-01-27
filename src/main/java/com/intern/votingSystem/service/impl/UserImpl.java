@@ -43,10 +43,15 @@ public class UserImpl implements UserService {
     public UserDTO updateUser(UserDTO userDTO) {
         User user = new User();
         user.userMthd(userDTO);
-        User user1 = userRepository.save(user);
-        UserDTO updatedUserDTO1 = new UserDTO();
-        updatedUserDTO1.userDTOMthd(user);
-        return updatedUserDTO1;
+        user.setId(userDTO.getId());
+        user.setFirstName(userDTO.getFirstName());
+        user.setLastName(userDTO.getLastName());
+        user.setEmail(userDTO.getEmail());
+        User updatedUser=userRepository.save(user);
+        UserDTO userDTO1=new UserDTO();
+        userDTO1.userDTOMthd(updatedUser);
+        return userDTO1;
+
     }
 
 

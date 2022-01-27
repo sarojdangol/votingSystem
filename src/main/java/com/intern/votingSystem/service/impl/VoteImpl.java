@@ -2,7 +2,9 @@ package com.intern.votingSystem.service.impl;
 
 import com.intern.votingSystem.dto.VoteCountDTO;
 import com.intern.votingSystem.dto.VoteDTO;
+import com.intern.votingSystem.model.User;
 import com.intern.votingSystem.model.Vote;
+import com.intern.votingSystem.repository.UserRepository;
 import com.intern.votingSystem.repository.VoteRepository;
 import com.intern.votingSystem.service.VoteService;
 import org.aspectj.runtime.internal.Conversions;
@@ -12,17 +14,25 @@ import org.springframework.stereotype.Service;
 import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class VoteImpl implements VoteService {
     @Autowired
     VoteRepository voteRepository;
 
+    @Autowired
+    UserRepository userRepository;
     @Override
     public VoteDTO addVote(VoteDTO voteDTO) {
-
+//        Optional <User> user= Optional.of(userRepository.getById(id));
+//        User user1= user.orElseThrow(()->new RuntimeException("user with given id not found"));
+//        System.out.println(id);
         Vote vote = new Vote(voteDTO);
+        System.out.println("id from vote is "+vote.getUser().getId());
+        System.out.println(vote.getUser().getId());
         Vote savedVote = voteRepository.save(vote);
+
         VoteDTO voteDTO1 = new VoteDTO(savedVote);
         return voteDTO1;
     }

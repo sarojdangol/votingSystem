@@ -16,10 +16,10 @@ public class VoteController {
     @Autowired
     VoteService voteService;
 
-    @PostMapping
-    VoteDTO addVote(@RequestBody VoteDTO voteDTO) {
-        return voteService.addVote(voteDTO);
-    }
+//    @PostMapping
+//    VoteDTO addVote(@RequestBody VoteDTO voteDTO) {
+//        return voteService.addVote(voteDTO);
+//    }
 
     @GetMapping
     List<VoteDTO> getAllVote() {
